@@ -1,0 +1,87 @@
+{
+  "profile": "data-package",
+  "name": "us-family-activities-by-metro",
+  "title": "Family activities by U.S. metro area (Grassy Knees)",
+  "description": "Weekly per-metro counts of kids' and family activities listed on Grassy Knees (grassyknees.com) across 42 U.S. metropolitan areas: listings that have not ended, dated events in the next 30 days and how many are free, classes and programs, places, the mix of activity types, the median published ticket price of paid events, and how many towns have listings. Every listing is researched from the organizer's own page and re-checked on a daily research run. Totals only: the table never contains individual listings. Counts describe what Grassy Knees lists, not every event in a metro.",
+  "homepage": "https://grassyknees.com/data",
+  "version": "2026-10-28",
+  "created": "2026-10-28T00:00:00Z",
+  "keywords": ["family", "kids", "children", "events", "activities", "free events", "ticket prices", "metro areas", "United States", "CBSA", "open data"],
+  "licenses": [
+    {
+      "name": "CC-BY-4.0",
+      "title": "Creative Commons Attribution 4.0 International",
+      "path": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Grassy Knees open data",
+      "path": "https://grassyknees.com/data"
+    },
+    {
+      "title": "U.S. Census Bureau, Metropolitan and Micropolitan Statistical Areas Population Totals (metro_population)",
+      "path": "https://www.census.gov/data/tables/time-series/demo/popest/2020s-total-metro-and-micro-statistical-areas.html"
+    }
+  ],
+  "contributors": [
+    {
+      "title": "Grassy Knees (grassyknees.com)",
+      "path": "https://grassyknees.com",
+      "role": "author"
+    },
+    {
+      "title": "Poetical Engine LLC",
+      "path": "https://poeticalengine.com",
+      "role": "publisher"
+    }
+  ],
+  "resources": [
+    {
+      "profile": "tabular-data-resource",
+      "name": "family-activities-by-metro",
+      "title": "Latest snapshot",
+      "description": "One row per metro area, refreshed weekly from https://grassyknees.com/data/family-activities-by-metro.csv. Dated copies are kept in data/snapshots/YYYY-MM-DD.csv with the same columns.",
+      "path": "data/family-activities-by-metro.csv",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "dialect": {"delimiter": ",", "header": true, "doubleQuote": true},
+      "schema": {
+        "primaryKey": ["metro_id"],
+        "missingValues": [""],
+        "fields": [
+          {"name": "metro_id", "type": "string", "title": "Metro ID", "description": "Grassy Knees metro identifier. The metro page is https://grassyknees.com/<metro_id>.", "constraints": {"required": true, "unique": true, "pattern": "[a-z0-9-]+"}},
+          {"name": "metro", "type": "string", "title": "Metro area", "description": "Metropolitan statistical area name as used by the U.S. Census Bureau (e.g. New York–Newark–Jersey City).", "constraints": {"required": true}},
+          {"name": "states", "type": "string", "title": "States", "description": "Postal codes of the states the metro area spans, separated by \" / \"."},
+          {"name": "metro_population", "type": "integer", "title": "Metro population", "description": "Metro area population from the U.S. Census Bureau population estimates.", "constraints": {"minimum": 0}},
+          {"name": "listings_current", "type": "integer", "title": "Current listings", "description": "Public events, classes/programs and places in the metro that have not ended.", "constraints": {"minimum": 0}},
+          {"name": "events_next_30_days", "type": "integer", "title": "Events, next 30 days", "description": "Dated events taking place in the next 30 days.", "constraints": {"minimum": 0}},
+          {"name": "free_events_next_30_days", "type": "integer", "title": "Free events, next 30 days", "description": "Events in the next 30 days that are free to attend.", "constraints": {"minimum": 0}},
+          {"name": "free_share_pct", "type": "integer", "title": "Free share (%)", "description": "free_events_next_30_days / events_next_30_days, as a whole percentage. Empty when there are no upcoming events.", "constraints": {"minimum": 0, "maximum": 100}},
+          {"name": "programs", "type": "integer", "title": "Programs", "description": "Current listings that are classes, camps or multi-session programs.", "constraints": {"minimum": 0}},
+          {"name": "places", "type": "integer", "title": "Places", "description": "Current listings that are places to visit (museums, parks, rinks, play spaces) rather than dated events.", "constraints": {"minimum": 0}},
+          {"name": "outdoors", "type": "integer", "title": "Outdoors", "description": "Current listings in the Outdoors category.", "constraints": {"minimum": 0}},
+          {"name": "arts_and_crafts", "type": "integer", "title": "Arts & crafts", "description": "Current listings in the Arts & crafts category.", "constraints": {"minimum": 0}},
+          {"name": "stem_and_discovery", "type": "integer", "title": "STEM & discovery", "description": "Current listings in the STEM & discovery category.", "constraints": {"minimum": 0}},
+          {"name": "sports_and_play", "type": "integer", "title": "Sports & play", "description": "Current listings in the Sports & play category.", "constraints": {"minimum": 0}},
+          {"name": "community", "type": "integer", "title": "Community", "description": "Current listings in the Community category (festivals, library and community events).", "constraints": {"minimum": 0}},
+          {"name": "cooking", "type": "integer", "title": "Cooking", "description": "Current listings in the Cooking category.", "constraints": {"minimum": 0}},
+          {"name": "other", "type": "integer", "title": "Other", "description": "Current listings in no other category. The seven category columns sum to listings_current.", "constraints": {"minimum": 0}},
+          {"name": "median_paid_event_price_usd", "type": "number", "title": "Median paid ticket (USD)", "description": "Median published price of paid events in the next 30 days, as the organizer lists it (usually one child's ticket). Empty when no paid event has a price.", "constraints": {"minimum": 0}},
+          {"name": "towns_with_listings", "type": "integer", "title": "Towns with listings", "description": "Distinct towns and neighborhoods in the current listings' addresses.", "constraints": {"minimum": 0}},
+          {"name": "last_checked", "type": "date", "format": "default", "title": "Last checked", "description": "Latest date (YYYY-MM-DD) on which a listing in the metro was checked against the organizer's page."}
+        ]
+      }
+    },
+    {
+      "name": "family-activities-by-metro-json",
+      "title": "Latest snapshot (JSON)",
+      "description": "The same rows as the CSV, wrapped with title, description, license, credit, lastChecked and generated fields, as published at https://grassyknees.com/data/family-activities-by-metro.json.",
+      "path": "data/family-activities-by-metro.json",
+      "format": "json",
+      "mediatype": "application/json",
+      "encoding": "utf-8"
+    }
+  ]
+}

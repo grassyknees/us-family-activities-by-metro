@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Family activities by U.S. metro area: open data</title>
+<meta name="description" content="Weekly per-metro counts of kids' events, free events, programs, places and ticket prices across 42 U.S. metro areas, from Grassy Knees. CC BY 4.0.">
+<link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Dataset",
+ "name":"Family activities by U.S. metro area (Grassy Knees)",
+ "description":"Weekly per-metro counts of kids' and family activities across 42 U.S. metropolitan areas: current listings, events in the next 30 days and the free share, programs, places, activity categories, median paid ticket price and towns with listings. Every listing is researched from the organizer's own page and re-checked daily. Totals only.",
+ "url":"https://grassyknees.github.io/us-family-activities-by-metro/",
+ "sameAs":"https://grassyknees.com/data",
+ "license":"https://creativecommons.org/licenses/by/4.0/",
+ "isAccessibleForFree":true,
+ "creator":{"@type":"Organization","name":"Grassy Knees","url":"https://grassyknees.com"},
+ "spatialCoverage":{"@type":"Place","name":"United States"},
+ "distribution":[
+  {"@type":"DataDownload","encodingFormat":"text/csv","contentUrl":"https://raw.githubusercontent.com/grassyknees/us-family-activities-by-metro/main/data/family-activities-by-metro.csv"},
+  {"@type":"DataDownload","encodingFormat":"application/json","contentUrl":"https://grassyknees.github.io/us-family-activities-by-metro/data/family-activities-by-metro.json"}]}
+</script>
+<style>
+:root{
+ --bg:#fbfaf6;--surface:#ffffff;--text:#1d2420;--muted:#5d6862;--line:#e3e1d8;--accent:#2f6b3f;--accent-soft:#e3efe5;--bar:#5c9a6b;--head:#f3f1ea;
+ color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+ --bg:#141816;--surface:#1b201d;--text:#e6ebe7;--muted:#9aa6a0;--line:#2c332f;--accent:#8fd0a0;--accent-soft:#22352a;--bar:#5c9a6b;--head:#202622;
+ color-scheme:dark;}}
+:root[data-theme="dark"]{
+ --bg:#141816;--surface:#1b201d;--text:#e6ebe7;--muted:#9aa6a0;--line:#2c332f;--accent:#8fd0a0;--accent-soft:#22352a;--bar:#5c9a6b;--head:#202622;
+ color-scheme:dark;}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--accent)}
+.wrap{max-width:1120px;margin:0 auto;padding:32px 16px 64px}
+header p.kicker{margin:0 0 6px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+h1{font-size:clamp(26px,4vw,38px);line-height:1.15;margin:0 0 12px;letter-spacing:-.01em}
+h2{font-size:21px;margin:40px 0 12px}
+.lede{max-width:760px;color:var(--text);margin:0 0 16px}
+.meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px;color:var(--muted);margin:0 0 8px}
+.meta a{font-weight:600}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:24px 0 0}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.stat b{display:block;font-size:26px;font-variant-numeric:tabular-nums;line-height:1.2}
+.stat span{font-size:13px;color:var(--muted)}
+ol.findings{padding-left:22px;max-width:820px}
+ol.findings li{margin:0 0 14px}
+ol.findings strong{display:block}
+.note{font-size:14px;color:var(--muted);max-width:820px}
+.controls{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin:0 0 10px;font-size:14px}
+.controls input[type=search]{font:inherit;padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--text);min-width:0;width:220px;max-width:100%}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left;white-space:normal;min-width:190px}
+td.states,th.states{text-align:left}
+thead th{position:sticky;top:0;background:var(--head);font-weight:600;font-size:13px;vertical-align:bottom}
+thead th button{all:unset;cursor:pointer;display:inline-flex;gap:4px;align-items:flex-end}
+thead th button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+thead th[aria-sort] button::after{content:"";width:.8em}
+thead th[aria-sort="ascending"] button::after{content:"▲";font-size:10px}
+thead th[aria-sort="descending"] button::after{content:"▼";font-size:10px}
+tbody td:first-child{position:sticky;left:0;background:var(--surface);z-index:1}
+thead th:first-child{left:0;z-index:2}
+@media (max-width:640px){th:first-child,td:first-child{min-width:150px}}
+tbody tr:hover td{background:var(--accent-soft)}
+tbody tr:last-child td{border-bottom:0}
+.cat{display:none}
+table.show-cats .cat{display:table-cell}
+.share{display:inline-flex;align-items:center;gap:6px;justify-content:flex-end}
+.share i{display:inline-block;height:8px;border-radius:4px;background:var(--bar)}
+.empty{color:var(--muted)}
+footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+.error{padding:16px;color:#a33}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+ <p class="kicker">Open data · CC BY 4.0</p>
+ <h1>Family activities by U.S. metro area</h1>
+ <p class="lede">Weekly counts of kids' and family events, classes and places across 42 U.S. metro areas, with the share of upcoming events that are free and the median price of paid ones. Every listing behind these numbers is researched from the organizer's own page and re-checked daily by <a href="https://grassyknees.com">Grassy Knees</a>. The table holds totals only, never the listings themselves.</p>
+ <p class="meta">
+  <span id="asof">Loading…</span>
+  <a href="https://raw.githubusercontent.com/grassyknees/us-family-activities-by-metro/main/data/family-activities-by-metro.csv">Download CSV</a>
+  <a href="data/family-activities-by-metro.json">JSON</a>
+  <a href="https://github.com/grassyknees/us-family-activities-by-metro/tree/main/data/snapshots">Weekly snapshots</a>
+  <a href="https://github.com/grassyknees/us-family-activities-by-metro">GitHub repository</a>
+ </p>
+ <div class="stats" id="stats"></div>
+</header>
+
+<h2>Findings</h2>
+<ol class="findings" id="findings"></ol>
+
+<h2>By metro area</h2>
+<div class="controls">
+ <label>Filter <input type="search" id="q" placeholder="Metro or state" autocomplete="off"></label>
+ <label><input type="checkbox" id="cats"> Show activity categories</label>
+</div>
+<div class="tablewrap"><table id="t"><thead></thead><tbody></tbody></table></div>
+<p class="note">Counts describe what Grassy Knees lists, not every event in a metro, and coverage depth differs by metro: compare shares and medians rather than raw counts. "Next 30 days" is relative to the snapshot date. Prices are the organizer's published price, usually one child's ticket. Click a column heading to sort; click a metro to see its current listings on grassyknees.com.</p>
+
+<h2>How to cite</h2>
+<p class="note" style="color:var(--text)">Grassy Knees. <em>Family activities by U.S. metro area</em> (snapshot <span id="citedate">YYYY-MM-DD</span>). <a href="https://grassyknees.com/data">https://grassyknees.com/data</a>. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
+
+<footer>
+ Data: <a href="https://grassyknees.com">Grassy Knees</a> (grassyknees.com), <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Metro populations: U.S. Census Bureau. Upstream files and documentation: <a href="https://grassyknees.com/data">grassyknees.com/data</a>. Questions or corrections: <a href="mailto:hello@grassyknees.com">hello@grassyknees.com</a>.
+</footer>
+</div>
+
+<script>
+(function(){
+ var SITE="https://grassyknees.com/";
+ var COLS=[
+  {k:"metro",label:"Metro area",type:"s"},
+  {k:"states",label:"States",type:"s",cls:"states"},
+  {k:"metro_population",label:"Population",type:"n"},
+  {k:"listings_current",label:"Current listings",type:"n"},
+  {k:"events_next_30_days",label:"Events, next 30 days",type:"n"},
+  {k:"free_events_next_30_days",label:"Free events",type:"n"},
+  {k:"free_share_pct",label:"Free share",type:"n"},
+  {k:"median_paid_event_price_usd",label:"Median paid ticket",type:"n"},
+  {k:"programs",label:"Programs",type:"n"},
+  {k:"places",label:"Places",type:"n"},
+  {k:"towns_with_listings",label:"Towns",type:"n"},
+  {k:"outdoors",label:"Outdoors",type:"n",cls:"cat"},
+  {k:"arts_and_crafts",label:"Arts & crafts",type:"n",cls:"cat"},
+  {k:"stem_and_discovery",label:"STEM & discovery",type:"n",cls:"cat"},
+  {k:"sports_and_play",label:"Sports & play",type:"n",cls:"cat"},
+  {k:"community",label:"Community",type:"n",cls:"cat"},
+  {k:"cooking",label:"Cooking",type:"n",cls:"cat"},
+  {k:"other",label:"Other",type:"n",cls:"cat"},
+  {k:"last_checked",label:"Last checked",type:"s"}
+ ];
+ var rows=[],sortKey="metro_population",sortDir=-1;
+ var table=document.getElementById("t"),thead=table.tHead,tbody=table.tBodies[0];
+ function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+ function num(v){return v.toLocaleString("en-US");}
+ function usd(v){return "$"+(Number.isInteger(v)?v:v.toFixed(2));}
+ // Findings text carries Markdown links; turn only [text](https://...) into anchors after escaping everything else.
+ function md(s){return esc(s).replace(/\[([^\]]+)\]\((https:\/\/[^)\s]+)\)/g,function(_,t,u){return '<a href="'+u+'">'+t+"</a>";}).replace(/`([^`]+)`/g,"<code>$1</code>");}
+ function cell(c,r){
+  var v=r[c.k];
+  if(c.k==="metro")return '<a href="'+SITE+encodeURIComponent(r.metro_id)+'">'+esc(v)+"</a>";
+  if(v===null||v===undefined||v==="")return '<span class="empty">–</span>';
+  if(c.k==="free_share_pct")return '<span class="share"><i style="width:'+Math.round(v*0.6)+'px"></i>'+v+"%</span>";
+  if(c.k==="median_paid_event_price_usd")return usd(v);
+  return c.type==="n"?num(v):esc(v);
+ }
+ function head(){
+  thead.innerHTML="<tr>"+COLS.map(function(c){
+   var s=c.k===sortKey?(sortDir>0?"ascending":"descending"):"none";
+   return '<th scope="col" class="'+(c.cls||"")+'" aria-sort="'+s+'"><button type="button" data-k="'+c.k+'">'+esc(c.label)+"</button></th>";
+  }).join("")+"</tr>";
+ }
+ function body(){
+  var q=document.getElementById("q").value.trim().toLowerCase();
+  var c=COLS.filter(function(x){return x.k===sortKey;})[0];
+  var list=rows.filter(function(r){return !q||(r.metro+" "+r.states+" "+r.metro_id).toLowerCase().indexOf(q)>=0;});
+  list.sort(function(a,b){
+   var x=a[sortKey],y=b[sortKey];
+   if(x===null||x===undefined)return 1; if(y===null||y===undefined)return -1;
+   return (c.type==="n"?x-y:String(x).localeCompare(String(y)))*sortDir;
+  });
+  tbody.innerHTML=list.map(function(r){return "<tr>"+COLS.map(function(c){return '<td class="'+(c.cls||"")+'">'+cell(c,r)+"</td>";}).join("")+"</tr>";}).join("")||'<tr><td colspan="'+COLS.length+'" class="empty">No metro matches.</td></tr>';
+ }
+ thead.addEventListener("click",function(e){
+  var b=e.target.closest("button[data-k]");if(!b)return;
+  var k=b.getAttribute("data-k");
+  if(k===sortKey)sortDir=-sortDir;else{sortKey=k;sortDir=COLS.filter(function(c){return c.k===k;})[0].type==="n"?-1:1;}
+  head();body();
+ });
+ document.getElementById("q").addEventListener("input",body);
+ document.getElementById("cats").addEventListener("change",function(e){table.classList.toggle("show-cats",e.target.checked);});
+
+ function stats(){
+  var sum=function(k){return rows.reduce(function(a,r){return a+(r[k]||0);},0);};
+  var ev=sum("events_next_30_days"),fr=sum("free_events_next_30_days");
+  var items=[[rows.length,"metro areas"],[num(sum("listings_current")),"current listings"],[num(ev),"events in the next 30 days"],[(ev?Math.round(fr/ev*1000)/10:0)+"%","of them free"]];
+  document.getElementById("stats").innerHTML=items.map(function(s){return '<div class="stat"><b>'+s[0]+"</b><span>"+s[1]+"</span></div>";}).join("");
+ }
+
+ Promise.all([
+  fetch("data/family-activities-by-metro.json").then(function(r){if(!r.ok)throw new Error("data "+r.status);return r.json();}),
+  fetch("data/findings.json").then(function(r){return r.ok?r.json():null;}).catch(function(){return null;})
+ ]).then(function(res){
+  var data=res[0],f=res[1];
+  rows=data.rows||[];
+  var asof=data.lastChecked||(data.generated||"").slice(0,10);
+  document.getElementById("asof").textContent="Snapshot "+asof+" · "+rows.length+" metros";
+  document.getElementById("citedate").textContent=asof;
+  stats();head();body();
+  document.getElementById("findings").innerHTML=f&&f.findings?f.findings.map(function(x){return "<li><strong>"+esc(x.title)+".</strong> "+md(x.text)+"</li>";}).join(""):"<li>Findings are unavailable.</li>";
+ }).catch(function(err){
+  document.getElementById("asof").textContent="Could not load the data.";
+  tbody.innerHTML='<tr><td class="error">Could not load data/family-activities-by-metro.json ('+esc(err.message)+").</td></tr>";
+ });
+})();
+</script>
+</body>
+</html>

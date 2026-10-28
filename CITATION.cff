@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this dataset, please cite it as below and link to https://grassyknees.com/data."
+type: dataset
+title: "Family activities by U.S. metro area"
+abstract: >-
+  Weekly per-metro counts of kids' and family activities listed on Grassy Knees
+  (grassyknees.com) across 42 U.S. metropolitan areas: current listings, events in
+  the next 30 days and the free share, programs, places, activity categories,
+  median paid ticket price and towns with listings. Every listing is researched
+  from the organizer's own page and re-checked daily. Counts only, no individual listings.
+authors:
+  - name: "Grassy Knees"
+    website: "https://grassyknees.com"
+    email: "hello@grassyknees.com"
+version: "2026-10-28"
+date-released: "2026-10-28"
+license: CC-BY-4.0
+url: "https://grassyknees.com/data"
+repository: "https://github.com/grassyknees/us-family-activities-by-metro"
+keywords:
+  - family activities
+  - kids events
+  - free events
+  - ticket prices
+  - metro areas
+  - United States
+  - open data
