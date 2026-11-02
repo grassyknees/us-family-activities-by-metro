@@ -1,31 +1,31 @@
 {
-  "asOf": "2026-10-28",
+  "asOf": "2026-11-01",
   "findings": [
     {
       "id": "free-share",
       "title": "Where kids' events are most often free",
-      "text": "Across all 42 metros, 33.6% of the 7,041 dated events in the next 30 days are free. The highest free shares are in [Denver](https://grassyknees.com/denver) (69% of 369), [Raleigh](https://grassyknees.com/raleigh) (66% of 77) and [Cleveland](https://grassyknees.com/cleveland) (64% of 58); the lowest are in [Providence](https://grassyknees.com/providence) (17% of 52), [Pittsburgh](https://grassyknees.com/pittsburgh) (18% of 179) and [Philadelphia](https://grassyknees.com/philadelphia) (20% of 202). (Metros with at least 50 upcoming events.)"
+      "text": "Across all 42 metros, 27.5% of the 7,411 dated events in the next 30 days are free. The highest free shares are in [Raleigh](https://grassyknees.com/raleigh) (63% of 101), [Denver](https://grassyknees.com/denver) (58% of 394) and [Cleveland](https://grassyknees.com/cleveland) (52% of 87); the lowest are in [Nashville](https://grassyknees.com/nashville) (10% of 93), [Providence](https://grassyknees.com/providence) (14% of 108) and [Houston](https://grassyknees.com/houston) (14% of 197). (Metros with at least 50 upcoming events.)"
     },
     {
       "id": "ticket-price",
       "title": "What a paid kids' event costs",
-      "text": "The typical metro's median paid ticket is $19.25 (median of 42 metro medians; usually one child's ticket as the organizer lists it). The most expensive are [San Francisco](https://grassyknees.com/san-francisco) ($29.95), [Houston](https://grassyknees.com/houston) ($29) and [San Antonio](https://grassyknees.com/san-antonio) ($29); the cheapest are [Washington](https://grassyknees.com/washington-dc) ($10), [Raleigh](https://grassyknees.com/raleigh) ($11.50) and [Cincinnati](https://grassyknees.com/cincinnati) ($12)."
+      "text": "The typical metro's median paid ticket is $22 (median of 42 metro medians; usually one child's ticket as the organizer lists it). The most expensive are [San Francisco](https://grassyknees.com/san-francisco) ($30), [Dallas](https://grassyknees.com/dallas-fort-worth) ($29) and [San Antonio](https://grassyknees.com/san-antonio) ($29); the cheapest are [Raleigh](https://grassyknees.com/raleigh) ($11.50), [Detroit](https://grassyknees.com/detroit) ($12) and [Washington](https://grassyknees.com/washington-dc) ($12)."
     },
     {
       "id": "category-mix",
       "title": "What kind of activities there are",
-      "text": "Community is the largest category: 32.9% of 14,988 current listings, ahead of Arts & crafts (24.8%) and Outdoors (13.7%). It leads (or ties) in 38 of 42 metros; the exceptions are [New York](https://grassyknees.com/new-york) (Arts & crafts), [Boston](https://grassyknees.com/boston) (Arts & crafts), [San Francisco](https://grassyknees.com/san-francisco) (Arts & crafts) and [Minneapolis](https://grassyknees.com/minneapolis) (Arts & crafts)."
+      "text": "Community is the largest category: 31.1% of 15,513 current listings, ahead of Arts & crafts (25.7%) and Sports & play (14.8%). It leads (or ties) in 30 of 42 metros; the exceptions are [New York](https://grassyknees.com/new-york) (Arts & crafts), [Los Angeles](https://grassyknees.com/los-angeles) (Arts & crafts), [Washington](https://grassyknees.com/washington-dc) (Arts & crafts), [Miami](https://grassyknees.com/miami) (Arts & crafts), [Boston](https://grassyknees.com/boston) (Arts & crafts), [San Francisco](https://grassyknees.com/san-francisco) (Arts & crafts), [Seattle](https://grassyknees.com/seattle) (Arts & crafts), [San Antonio](https://grassyknees.com/san-antonio) (Arts & crafts), [Austin](https://grassyknees.com/austin) (Arts & crafts), [Las Vegas](https://grassyknees.com/las-vegas) (Arts & crafts), [Providence](https://grassyknees.com/providence) (Arts & crafts) and [Milwaukee](https://grassyknees.com/milwaukee) (Outdoors)."
     },
     {
       "id": "free-vs-price",
       "title": "Free-heavy metros are not necessarily cheaper",
-      "text": "Across the 41 metros with at least 50 upcoming events, there is no rank correlation between a metro's free-event share and its median paid ticket (Spearman's rho = -0.04). A metro with many free events does not reliably have cheaper paid ones.",
-      "rho": -0.042
+      "text": "Across the 42 metros with at least 50 upcoming events, there is no rank correlation between a metro's free-event share and its median paid ticket (Spearman's rho = -0.07). A metro with many free events does not reliably have cheaper paid ones.",
+      "rho": -0.075
     },
     {
       "id": "coverage-depth",
       "title": "Read the counts as catalog coverage, not per-capita supply",
-      "text": "Current listings per 100,000 residents range from [Denver](https://grassyknees.com/denver) (25.2) down to [New York](https://grassyknees.com/new-york) (2.9), with a median of 10.2. Large metros are not proportionally larger in the catalog, so compare shares and medians across metros, not raw counts."
+      "text": "Current listings per 100,000 residents range from [Denver](https://grassyknees.com/denver) (26.0) down to [New York](https://grassyknees.com/new-york) (2.9), with a median of 11.9. Large metros are not proportionally larger in the catalog, so compare shares and medians across metros, not raw counts."
     }
   ]
 }
